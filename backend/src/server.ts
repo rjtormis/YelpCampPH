@@ -6,6 +6,7 @@ import { ConnectMongoDB } from "utilities/general";
 
 // General Routes
 import userRoutes from "@routes/user";
+import { generalErrorHandlerMiddleware } from "@middlewares/error";
 
 ConnectMongoDB();
 
@@ -19,15 +20,16 @@ app.use(
   })
 );
 
-app.use("/user", userRoutes);
+app.use("/users", userRoutes);
+app.use(generalErrorHandlerMiddleware);
 
 app.use((err: any, req: Request, res: Response, next: NextFunction) => {
   const { status = 500, message, field } = err;
 
   if (field) {
-    res.status(status).json({ status: status, field: field, message: message });
+    return res.status(status).json({ status: status, field: field, message: message });
   } else {
-    res.status(status).json({ status: status, message: message });
+    return res.status(status).json({ status: status, message: message });
   }
 });
 
