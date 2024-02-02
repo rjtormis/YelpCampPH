@@ -21,7 +21,6 @@ app.use(
 );
 
 app.use("/users", userRoutes);
-app.use(generalErrorHandlerMiddleware);
 
 app.use((err: any, req: Request, res: Response, next: NextFunction) => {
   const { status = 500, message, field } = err;
