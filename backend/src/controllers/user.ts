@@ -1,3 +1,4 @@
+import { param } from "express-validator";
 import User from "@models/user";
 import { Request, Response, NextFunction } from "express";
 import { wrapper } from "utilities/general";
@@ -20,28 +21,40 @@ export const createUser = wrapper(async (req: Request, res: Response, next: Next
   return res.status(201).json({ message: "Account successfully created.", status: 200 });
 });
 
-export const updateUser = wrapper(async (req: Request, res: Response, next: NextFunction) => {
-  // TODO: Handle multiple fields.
+// ==================================== User with ID ====================================
 
-  const { id, name, emailAddress, password } = req.body;
+export const getSpecificUser = wrapper(async (req: Request, res: Response) => {
+  const { id } = req.params;
 
-  const existingUser = await User.findById(id);
-  if (!existingUser) throw Error("User does not exists");
+  const queryUser = await User.findById(id);
 
-  const updateUser = await User.findByIdAndUpdate({
-    name,
-    emailAddress,
-    password,
-  });
-
-  return res.status(200).json({ message: "User upated successfully", user: updateUser });
+  return res.status(200).json({ user: queryUser });
 });
+
+export const updateSpecificUser = wrapper(
+  async (req: Request, res: Response, next: NextFunction) => {
+    // TODO: Handle multiple fields.
+
+    const { id, name, emailAddress, password } = req.body;
+
+    const existingUser = await User.findById(id);
+    if (!existingUser) throw Error("User does not exists");
+
+    const updateUser = await User.findByIdAndUpdate({
+      name,
+      emailAddress,
+      password,
+    });
+
+    return res.status(200).json({ message: "User upated successfully", user: updateUser });
+  }
+);
 
 /**
  * Delete user
  */
-export const deleteUser = wrapper(async (req: Request, res: Response) => {
-  const { id } = req.body;
+export const deleteSpecificUser = wrapper(async (req: Request, res: Response) => {
+  const { id } = req.params;
 
   const existingUser = await User.findById(id);
 
