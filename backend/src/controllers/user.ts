@@ -1,4 +1,3 @@
-import { param } from "express-validator";
 import User from "@models/user";
 import { Request, Response, NextFunction } from "express";
 import { wrapper } from "utilities/general";

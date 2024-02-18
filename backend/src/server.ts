@@ -9,6 +9,7 @@ import userRoutes from "@routes/user";
 import { generalErrorHandlerMiddleware } from "@middlewares/error";
 import campgroundRouter from "@routes/campground";
 import profileRouter from "@routes/profile";
+import authRouter from "@routes/authentication";
 
 ConnectMongoDB();
 
@@ -25,6 +26,7 @@ app.use(
 app.use("/users", userRoutes);
 app.use("/campgrounds", campgroundRouter);
 app.use("/profile", profileRouter);
+app.use("/auth", authRouter);
 
 app.use((err: any, req: Request, res: Response, next: NextFunction) => {
   const { status = 500, message, field } = err;
