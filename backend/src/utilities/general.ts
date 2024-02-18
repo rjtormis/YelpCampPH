@@ -2,6 +2,7 @@ import { Request, Response, NextFunction } from "express";
 import mongoose from "mongoose";
 
 const DB = process.env.DB;
+export const SK = process.env.SK as string;
 /**
  * @param fn
  * @description a function that wraps async/await error
