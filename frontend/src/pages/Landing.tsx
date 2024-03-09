@@ -1,5 +1,5 @@
 function Landing() {
-  return <main className=" h-screen w-screen bg-zinc-100">Landing</main>;
+  return <div>Landing</div>;
 }
 
 export default Landing;
