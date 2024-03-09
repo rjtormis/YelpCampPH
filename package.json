@@ -12,5 +12,8 @@
   "license": "ISC",
   "dependencies": {
     "express-validator": "^7.0.1"
+  },
+  "devDependencies": {
+    "@types/node": "^20.11.19"
   }
 }
