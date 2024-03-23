@@ -1,6 +1,4 @@
-import logo from "@/assets/logo.png";
 import landing from "@/assets/landing-1.jpg";
-import { Button } from "@/components/ui/button";
 import landing2 from "@/assets/landing-2.jpg";
 import landing3 from "@/assets/landing-3.jpg";
 import guide1 from "@/assets/guide1.jpg";
@@ -20,31 +18,7 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 
 function Landing() {
   return (
-    <div className="w-screen p-10">
-      <header className="flex  items-center">
-        <div className="flex items-center">
-          <img src={logo} alt="YelpCampPH" className="h-[60px] w-[60px]" />
-          <p className="text-xl font-semibold">YelpCamp PH</p>
-        </div>
-        <ul className="flex gap-4 ml-8 font-bold">
-          <li>
-            {" "}
-            <Button variant="link">Home</Button>
-          </li>
-          <li>
-            {" "}
-            <Button variant="link">Campsites</Button>
-          </li>
-          <li>
-            {" "}
-            <Button variant="link">Contact us</Button>
-          </li>
-        </ul>
-        <Button variant="outline" className="ml-auto">
-          Sign in
-        </Button>
-      </header>
-
+    <>
       <div className="my-8 h-[700px] relative">
         <img
           src={landing}
@@ -205,10 +179,7 @@ function Landing() {
           </div>
         </div>
       </div>
-      <footer className="w-full h-full bg-primary rounded-tl-xl rounded-tr-lg mt-32">
-        <q>!</q>
-      </footer>
-    </div>
+    </>
   );
 }
 

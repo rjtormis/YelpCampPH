@@ -13,13 +13,16 @@ import Main from "@/pages/Dashboard/Main";
 
 // Layout
 import DashboardLayout from "./layouts/DashboardLayout";
+import LandingLayout from "./layouts/LandingLayout";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
     <>
-      <Route index element={<Landing />} />
-      <Route path="/sign-in" element={<Signin />} />
-      <Route path="/sign-up" element={<Signup />} />
+      <Route element={<LandingLayout />}>
+        <Route index element={<Landing />} />
+        <Route path="/sign-in" element={<Signin />} />
+        <Route path="/sign-up" element={<Signup />} />
+      </Route>
       <Route path="/dashboard" element={<DashboardLayout />}>
         <Route path="index" element={<Main />} />
       </Route>
