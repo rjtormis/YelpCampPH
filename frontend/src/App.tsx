@@ -9,11 +9,15 @@ import {
 import Landing from "@/pages/Landing";
 import Signin from "@/pages/Signin";
 import Signup from "@/pages/Signup";
-import Main from "@/pages/Dashboard/Main";
+import Home from "@/pages/Dashboard/Home";
 
 // Layout
 import DashboardLayout from "./layouts/DashboardLayout";
 import LandingLayout from "./layouts/LandingLayout";
+import Listing from "./pages/Dashboard/Listing";
+import { Inbox } from "lucide-react";
+import Profile from "./pages/Dashboard/Profile";
+import Setting from "./pages/Dashboard/Setting";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -24,7 +28,11 @@ const router = createBrowserRouter(
         <Route path="/sign-up" element={<Signup />} />
       </Route>
       <Route path="/dashboard" element={<DashboardLayout />}>
-        <Route path="index" element={<Main />} />
+        <Route index element={<Home />} />
+        <Route path="/dashboard/listing" element={<Listing />} />
+        <Route path="inbox" element={<Inbox />} />
+        <Route path="profile" element={<Profile />} />
+        <Route path="setting" element={<Setting />} />
       </Route>
     </>
   )
